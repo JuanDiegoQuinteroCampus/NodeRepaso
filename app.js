@@ -4,6 +4,7 @@ import { getPosts } from './posts.js';
 import { getComments } from './comments.js';
 import { getAlbums } from './albums.js';
 import { getPhotos } from './photos.js';
+import { getTodos } from './todos.js';
 
 
 const server = createServer((req, res) => {
@@ -23,6 +24,10 @@ const server = createServer((req, res) => {
     });
   } else if (req.url === '/photos') {
     getPhotos((plantilla) => {
+      res.end(plantilla);
+    });
+  } else if (req.url === '/todos') {
+    getTodos((plantilla) => {
       res.end(plantilla);
     });
   } 
