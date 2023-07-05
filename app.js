@@ -3,6 +3,7 @@ import { createServer } from 'http';
 import { getPosts } from './posts.js';
 import { getComments } from './comments.js';
 import { getAlbums } from './albums.js';
+import { getPhotos } from './photos.js';
 
 
 const server = createServer((req, res) => {
@@ -18,6 +19,10 @@ const server = createServer((req, res) => {
     });
   } else if (req.url === '/albums') {
     getAlbums((plantilla) => {
+      res.end(plantilla);
+    });
+  } else if (req.url === '/photos') {
+    getPhotos((plantilla) => {
       res.end(plantilla);
     });
   } 
