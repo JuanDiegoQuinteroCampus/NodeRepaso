@@ -1,6 +1,7 @@
 
 import { createServer } from 'http';
 import { getPosts } from './posts.js';
+import { getComments } from './comments.js';
 
 
 const server = createServer((req, res) => {
@@ -8,6 +9,10 @@ const server = createServer((req, res) => {
 
   if (req.url === '/posts') {
     getPosts((plantilla) => {
+      res.end(plantilla);
+    });
+  } else if (req.url === '/comments') {
+    getComments((plantilla) => {
       res.end(plantilla);
     });
   } 
