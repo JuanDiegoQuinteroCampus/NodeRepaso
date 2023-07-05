@@ -2,6 +2,7 @@
 import { createServer } from 'http';
 import { getPosts } from './posts.js';
 import { getComments } from './comments.js';
+import { getAlbums } from './albums.js';
 
 
 const server = createServer((req, res) => {
@@ -13,6 +14,10 @@ const server = createServer((req, res) => {
     });
   } else if (req.url === '/comments') {
     getComments((plantilla) => {
+      res.end(plantilla);
+    });
+  } else if (req.url === '/albums') {
+    getAlbums((plantilla) => {
       res.end(plantilla);
     });
   } 
