@@ -5,7 +5,7 @@ import { getComments } from './comments.js';
 import { getAlbums } from './albums.js';
 import { getPhotos } from './photos.js';
 import { getTodos } from './todos.js';
-
+import { getUsers } from './users.js';
 
 const server = createServer((req, res) => {
   let json = '';
@@ -30,7 +30,11 @@ const server = createServer((req, res) => {
     getTodos((plantilla) => {
       res.end(plantilla);
     });
-  } 
+  } else if (req.url === '/users') {
+    getUsers((plantilla) => {
+      res.end(plantilla);
+    });
+  }
 });
 
 const config = {
